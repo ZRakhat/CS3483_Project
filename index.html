@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Position Trainer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-running"></i> Body Position Trainer</h1>
+            <p class="subtitle">Real-time posture analysis and training feedback</p>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="output"></canvas>
+                        <div class="video-overlay">
+                            <div class="status-indicator">
+                                <span id="status">Initializing camera...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-controls">
+                        <button id="startBtn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Tracking
+                        </button>
+                        <button id="stopBtn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <button id="captureBtn" class="btn btn-success" disabled>
+                            <i class="fas fa-camera"></i> Capture Pose
+                        </button>
+                        <select id="exerciseSelect" class="dropdown">
+                            <option value="squat">Squat</option>
+                            <option value="pushup">Push-up</option>
+                            <option value="plank">Plank</option>
+                            <option value="posture">Standing Posture</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="feedback-container">
+                    <h3><i class="fas fa-comment-medical"></i> Real-time Feedback</h3>
+                    <div id="feedbackList" class="feedback-list">
+                        <div class="feedback-item">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Select an exercise and start tracking to receive feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="stats-container">
+                    <h3><i class="fas fa-chart-line"></i> Performance Metrics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="accuracyScore">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="repsCount">0</div>
+                            <div class="stat-label">Repetitions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="sessionTime">00:00</div>
+                            <div class="stat-label">Session Time</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="caloriesEst">0</div>
+                            <div class="stat-label">Calories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-guide">
+                    <h3><i class="fas fa-graduation-cap"></i> Exercise Guide</h3>
+                    <div id="exerciseInstructions">
+                        <h4>Squat Instructions:</h4>
+                        <ol>
+                            <li>Stand with feet shoulder-width apart</li>
+                            <li>Keep your back straight</li>
+                            <li>Lower your body as if sitting in a chair</li>
+                            <li>Knees should not go past toes</li>
+                            <li>Return to starting position</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="history-container">
+                    <h3><i class="fas fa-history"></i> Session History</h3>
+                    <div id="historyList">
+                        <p>No sessions recorded yet.</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="calibrateBtn" class="btn btn-warning">
+                        <i class="fas fa-ruler-combined"></i> Calibrate
+                    </button>
+                    <button id="settingsBtn" class="btn btn-outline">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                    <button id="exportBtn" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <h3><i class="fas fa-cog"></i> Settings</h3>
+                <div class="settings-group">
+                    <label>
+                        <input type="checkbox" id="showSkeleton" checked> Show skeleton overlay
+                    </label>
+                    <label>
+                        <input type="checkbox" id="audioFeedback" checked> Audio feedback
+                    </label>
+                    <label>
+                        <input type="checkbox" id="saveSessions"> Save sessions locally
+                    </label>
+                </div>
+                <div class="settings-group">
+                    <label>Feedback sensitivity:</label>
+                    <input type="range" id="sensitivity" min="1" max="10" value="5">
+                </div>
+                <button id="closeSettings" class="btn btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load TensorFlow.js and PoseNet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <script src="pose-detector.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

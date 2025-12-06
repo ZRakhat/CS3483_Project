@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e6e6e6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background: rgba(25, 25, 35, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    padding: 25px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #4cc9f0;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #4cc9f0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #a5b4cb;
+    font-weight: 300;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.video-container {
+    background: #0f1525;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+video, canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+.status-indicator {
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.video-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 201, 240, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #4cc9f0;
+    color: #4cc9f0;
+}
+
+.dropdown {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #1a1a2e;
+    color: white;
+    border: 1px solid #4cc9f0;
+    font-size: 1rem;
+    margin-left: auto;
+}
+
+.feedback-container {
+    background: #0f1525;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.feedback-container h3 {
+    color: #4cc9f0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feedback-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.feedback-item {
+    padding: 12px;
+    margin: 8px 0;
+    background: rgba(76, 201, 240, 0.1);
+    border-left: 4px solid #4cc9f0;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.stats-container, .exercise-guide, .history-container {
+    background: #0f1525;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stats-container h3, .exercise-guide h3, .history-container h3 {
+    color: #4cc9f0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(76, 201, 240, 0.3);
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #4cc9f0;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #a5b4cb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.exercise-guide ol {
+    margin-left: 20px;
+    line-height: 1.8;
+    color: #a5b4cb;
+}
+
+.exercise-guide li {
+    margin: 8px 0;
+}
+
+.history-container {
+    flex-grow: 1;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    background: #0f1525;
+    border-radius: 15px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.settings-group {
+    margin: 20px 0;
+}
+
+.settings-group label {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+    accent-color: #4cc9f0;
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-wrapper {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .video-wrapper {
+        height: 300px;
+    }
+    
+    .video-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn, .dropdown {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
